@@ -9,13 +9,13 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   app:
-    build: ./projeto_todoproject
+    build: ./app
     env_file:
       - .env
     depends_on:
       - db
     volumes:
-      - ./projeto_todoproject:/app
+      - ./app:/app
       - static_volume:/app/static
     expose:
       - 8000
