@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: ./projeto_todoproject
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - ./projeto_todoproject:/app
+      - static_volume:/app/static
+    expose:
+      - 8000
+
+  proxy:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    volumes:
+      - static_volume:/static
+
+volumes:
+  postgres_data:
+  static_volume:
