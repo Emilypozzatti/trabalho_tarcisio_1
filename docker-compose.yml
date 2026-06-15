@@ -9,16 +9,11 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   app:
-    build: ./app
+    image: ghcr.io/Emilypozzatti/trabalho_tarcisio_1:latest
+    ports:
+      - "8000:8000"
     env_file:
       - .env
-    depends_on:
-      - db
-    volumes:
-      - ./app:/app
-      - static_volume:/app/static
-    expose:
-      - 8000
 
   proxy:
     build: ./nginx
