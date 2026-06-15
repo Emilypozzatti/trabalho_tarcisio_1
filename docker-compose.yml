@@ -12,7 +12,7 @@ services:
     restart: always
 
   app:
-    image: ghcr.io/Emilypozzatti/trabalho_tarcisio_1:latest
+    image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest
     ports:
       - "8000:8000"
     environment:
