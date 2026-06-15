@@ -1,0 +1,31 @@
+name: Build and Deploy Django
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build image
+        run: docker build -t ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest .
+
+      - name: Push image
+        run: docker push ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest
