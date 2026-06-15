@@ -18,10 +18,6 @@ COPY . .
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-CMD ["/entrypoint.sh"]
-
-# expõe porta
 EXPOSE 8000
 
-# gunicorn otimizado
-CMD ["gunicorn", "todoproject.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+CMD ["/entrypoint.sh"]
