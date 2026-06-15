@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image
-        run: docker build -t ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest .
+        run: docker build -t ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest ./app
 
       - name: Push image
         run: docker push ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest
