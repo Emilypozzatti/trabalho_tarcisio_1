@@ -35,3 +35,6 @@ jobs:
 
       - name: Push Nginx image
         run: docker push ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest
+
+      - name: Redeploy Portainer stack
+        run: curl -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"
