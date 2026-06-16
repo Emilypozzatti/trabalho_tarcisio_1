@@ -41,7 +41,7 @@ jobs:
       - name: Push Nginx image
         run: docker push ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:v1.0.${{ github.run_number }}
 
-      - name: Atualizar docker-compose.yml
+      - name: Atualizar app/docker-compose.yml
         run: |
           sed -i 's|image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:.*|image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:v1.0.${{ github.run_number }}|' app/docker-compose.yml
           sed -i 's|image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:.*|image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:v1.0.${{ github.run_number }}|' app/docker-compose.yml
@@ -51,7 +51,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add docker-compose.yml
+          git add app/docker-compose.yml
 
           git commit -m "Atualiza imagens para versao ${{ github.run_number }}" || exit 0
 
