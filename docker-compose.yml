@@ -7,6 +7,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+    - app_network
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: always
@@ -22,6 +24,10 @@ services:
     depends_on:
       - db
     restart: always
+    networks:
+      app_network:
+        aliases:
+          - app
 
   proxy:
     image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest
@@ -30,6 +36,9 @@ services:
     depends_on:
       - app
     restart: always
+    networks:
+      - app_network
 
-volumes:
-  postgres_data:
+networks:
+  app_network:
+    driver: overlay
