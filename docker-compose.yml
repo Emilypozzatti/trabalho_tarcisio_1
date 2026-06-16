@@ -24,12 +24,12 @@ services:
     restart: always
 
   proxy:
-  image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest
-  ports:
-    - "8080:80"
-  depends_on:
-    - app
-  restart: always
+    image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+    restart: always
 
 volumes:
   postgres_data:
