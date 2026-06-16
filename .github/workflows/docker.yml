@@ -24,8 +24,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build image
+      - name: Build Django image
         run: docker build -t ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest ./app
 
-      - name: Push image
+      - name: Push Django image
         run: docker push ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest
+
+      - name: Build Nginx image
+        run: docker build -t ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest ./nginx
+
+      - name: Push Nginx image
+        run: docker push ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest

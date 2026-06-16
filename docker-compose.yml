@@ -24,19 +24,12 @@ services:
     restart: always
 
   proxy:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-    depends_on:
-      - app
-    configs:
-      - source: nginx_config
-        target: /etc/nginx/conf.d/default.conf
-    restart: always
+  image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:latest
+  ports:
+    - "8080:80"
+  depends_on:
+    - app
+  restart: always
 
 volumes:
   postgres_data:
-
-configs:
-  nginx_config:
-    file: ./nginx/nginx.conf
