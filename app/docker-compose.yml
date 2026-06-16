@@ -28,7 +28,7 @@ services:
         aliases:
           - app
     deploy:
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: any
 
