@@ -31,12 +31,5 @@ services:
       - app
     restart: always
 
-  watchtower:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 60 --cleanup
-    restart: always
-
 volumes:
   postgres_data:
