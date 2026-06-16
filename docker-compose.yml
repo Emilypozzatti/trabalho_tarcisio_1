@@ -13,14 +13,12 @@ services:
 
   app:
     image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:latest
-    ports:
-      - "8000:8000"
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
+      DB_HOST: db
+      DB_PORT: 5432
     depends_on:
       - db
     restart: always
@@ -28,13 +26,17 @@ services:
   proxy:
     image: nginx:alpine
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - app
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    configs:
+      - source: nginx_config
+        target: /etc/nginx/conf.d/default.conf
     restart: always
 
 volumes:
   postgres_data:
-  static_volume:
+
+configs:
+  nginx_config:
+    file: ./nginx/nginx.conf
