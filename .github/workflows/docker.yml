@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'docker-compose.yml'
+      - 'app/docker-compose.yml'
       - '**/*.md'
 
 permissions:
@@ -43,8 +43,8 @@ jobs:
 
       - name: Atualizar docker-compose.yml
         run: |
-          sed -i 's|image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:.*|image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:v1.0.${{ github.run_number }}|' docker-compose.yml
-          sed -i 's|image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:.*|image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:v1.0.${{ github.run_number }}|' docker-compose.yml
+          sed -i 's|image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:.*|image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:v1.0.${{ github.run_number }}|' app/docker-compose.yml
+          sed -i 's|image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:.*|image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:v1.0.${{ github.run_number }}|' app/docker-compose.yml
 
       - name: Commit da nova versao
         run: |
