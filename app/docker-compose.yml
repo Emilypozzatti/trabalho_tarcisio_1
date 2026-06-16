@@ -40,6 +40,9 @@ services:
       - app_network
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.hostname == grupo1-proxy
       restart_policy:
         condition: any
 
