@@ -16,7 +16,7 @@ services:
         condition: any
 
   app:
-    image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:v1.0.40
+    image: ghcr.io/emilypozzatti/trabalho_tarcisio_1:v1.0.41
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -33,7 +33,7 @@ services:
         condition: any
 
   proxy:
-    image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:v1.0.40
+    image: ghcr.io/emilypozzatti/trabalho_tarcisio_nginx:v1.0.41
     ports:
       - "8080:80"
     networks:
